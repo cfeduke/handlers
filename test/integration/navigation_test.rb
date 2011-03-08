@@ -10,4 +10,10 @@ class NavigationTest < ActiveSupport::IntegrationCase
     visit '/handlers/show'
     assert_match(/Congratulations!  You just created another template handler!/, page.body)
   end
+  
+  test ".md template handler" do
+    visit '/handlers/rdiscount'
+    expected = %r|<p>RDiscount is <em>cool</em> and <strong>fast</strong>!</p>|
+    assert expected =~ page.body
+  end
 end
