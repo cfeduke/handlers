@@ -16,4 +16,10 @@ class NavigationTest < ActiveSupport::IntegrationCase
     expected = %r|<p>RDiscount is <em>cool</em> and <strong>fast</strong>!</p>|
     assert expected =~ page.body
   end
+  
+  test ".merb template handler" do
+    visit '/handlers/merb'
+    expected = %r|<p>MERB template handler is <strong>cool and fast</strong>!</p>|
+    assert expected =~ page.body.strip
+  end
 end
